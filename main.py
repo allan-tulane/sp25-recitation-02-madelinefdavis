@@ -56,7 +56,7 @@ def span_calc(n, a, b, f):
 	if n == 1:	
 		return 1
 	else:
-		return a * span_calc(n // b, a, b, f) + f
+		return a * span_calc(n // b, a, b, f) + f(n)
 	
 
 
