@@ -20,14 +20,30 @@ def test_work():
 	assert work_calc(100, 2, 2, lambda n: n*n) == 19580
 
 def test_compare_work():
-	# curry work_calc to create multiple work
-	# functions that can be passed to compare_work
+	"""Compare empirical results of different work functions"""
 
-	# create work_fn1
-	# create work_fn2
+	# Define work functions with different f(n)
+	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)  # f(n) = n
+	work_fn2 = lambda n: work_calc(n, 2, 2, lambda x: 1)  # f(n) = 1
+
+	
 	res = compare_work(work_fn1, work_fn2)
-	print(res)
+	print_results(res)
+
+	# Verify that W(n) with f(n) = n grows faster than W(n) with f(n) = 1
+	for n, w1, w2 in res:
+		assert w1 >= w2, f"Failed at n={n}: W1={w1}, W2={w2}"
+	
 
 
 def test_compare_span():
-	pass
+	span_fn1 = lambda n: span_calc(n, 2, 2, lambda x: x)
+	span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: 1)
+
+	res = compare_span(span_fn1, span_fn2)
+	print_results(res)
+
+	for n, s1, s2 in res:
+		assert s1 >= s2, f"Failed at n={n}: S1={s1}, S2={s2}"
+	
+		

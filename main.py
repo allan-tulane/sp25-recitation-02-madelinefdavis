@@ -56,7 +56,7 @@ def span_calc(n, a, b, f):
 	if n == 1:	
 		return 1
 	else:
-		return a * span_calc(n // b, a, b, f) + f(n)
+		return span_calc(n // b, a, b, f) + f(n)
 	
 
 
@@ -106,8 +106,8 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 		
 		result.append((
 			n,
-			span_fn1,
-			span_fn2
+			span_fn1(n),
+			span_fn2(n)
 			))
 	return result
 	
