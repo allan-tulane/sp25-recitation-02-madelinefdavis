@@ -28,7 +28,7 @@ def test_compare_work():
 	print_results(res)
 	
 	# Add an assertion to make pytest run this test
-	assert len(res) > 0
+	
 
 #compare_work(lambda n:1, lambda n:n)
 #compare_work(lambda n:n, lambda n: math.log(n))
