@@ -35,7 +35,7 @@ where $W(1) = 1$.
 
 - [x] 3. (2 point) Now implement `work_calc`, which generalizes the above so that we can now input $a$, $b$ and a *function* $f(n)$ as arguments. Test this code by completing the test cases in `test_work` and adding 3 more cases.
 
-- [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
+- [x] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
 
 **Case 1:** $f(n) = 1
@@ -56,8 +56,9 @@ When $f(n) = \log n$ it is balanced and $W(n) = O(nlog n)$ and my results seemed
 $W(n) = aW(n/b) + n$
 
 If a>b it is root dominated so $W(n) = O(n)$
-If a<b it is leaf dominated
-$W(n) = O(nlog (n))$
+If a<b it is leaf dominated so $W(n) = O(n^{log_b a})$
+When a = b it is balanced so $W(n) = O(nlog (n))$ 
+My a= 2 and b=2 and my results follow that complexity
 
 Comparison of work functions: $f(n) = 1$ and $f(n) = \log n$
 |     n |   W_1 |       W_2 |
@@ -82,9 +83,15 @@ Comparison of work functions: $f(n) = 1$ and $f(n) = n$
 | 10000 | 16383 | 81918192 |
        
 
-- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
+- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
 
-**TODO: your answer goes here**
+$W(n) = $W(n) = aW(n/b) + n^c$
+
+**Case 1:** $c < \log_b a$
+
+**Case 2:** $c > \log_b a$
+
+**Case 3:** $c = \log_b a$
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
