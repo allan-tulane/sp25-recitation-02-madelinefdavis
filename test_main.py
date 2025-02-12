@@ -21,6 +21,14 @@ def test_work():
 
 def test_compare_work():
 	
+# curry work_calc to create multiple work
+	# functions taht can be passed to compare_work
+    
+	# create work_fn1
+	# create work_fn2
+    #res = compare_work(work_fn1, work_fn2)
+	#print(res)
+	
 
 	# Define work functions with different f(n)
 	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)  # f(n) = n
