@@ -20,16 +20,15 @@ def test_work():
 	assert work_calc(100, 2, 2, lambda n: n*n) == 19580
 
 def test_compare_work():
-	# curry work_calc to create multiple work
-		# functions taht can be passed to compare_work
+	# Test different work functions
+	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: 1)
+	work_fn2 = lambda n: work_calc(n, 2, 2, lambda x: x*x)
 
-		# create work_fn1
-		work_fn1 = lambda n: 1
-		# create work_fn2
-		work_fn2 = lambda n: n*n
-
-		res = compare_work(work_fn1, work_fn2)
-		print_results(res)
+	res = compare_work(work_fn1, work_fn2)
+	print_results(res)
+	
+	# Add an assertion to make pytest run this test
+	assert len(res) > 0
 
 #compare_work(lambda n:1, lambda n:n)
 #compare_work(lambda n:n, lambda n: math.log(n))
