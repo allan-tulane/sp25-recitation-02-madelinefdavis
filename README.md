@@ -61,26 +61,27 @@ When a = b it is balanced so $W(n) = O(nlog (n))$
 My a= 2 and b=2 and my results follow that complexity
 
 Comparison of work functions: $f(n) = 1$ and $f(n) = \log n$
+Comparison of work functions:
 |     n |   W_1 |       W_2 |
 |-------|-------|-----------|
-|    10 |    15 |    24.118 |
-|    20 |    31 |    60.936 |
-|    50 |    63 |   153.273 |
-|   100 |   127 |   354.126 |
-|  1000 |  1023 |  4041.863 |
-|  5000 |  8191 | 38973.906 |
-| 10000 | 16383 | 83633.898 |
+|    10 |    15 |    16.294 |
+|    20 |    31 |    35.584 |
+|    50 |    63 |    84.201 |
+|   100 |   127 |   173.008 |
+|  1000 |  1023 |  1471.608 |
+|  5000 |  8191 |  9919.326 |
+| 10000 | 16383 | 19847.862 |
 
 Comparison of work functions: $f(n) = 1$ and $f(n) = n$
-|     n |   W_1 |      W_2 |
-|-------|-------|----------|
-|    10 |    15 |       78 |
-|    20 |    31 |      316 |
-|    50 |    63 |     1582 |
-|   100 |   127 |     6364 |
-|  1000 |  1023 |   511512 |
-|  5000 |  8191 | 20479096 |
-| 10000 | 16383 | 81918192 |
+|     n |   W_1 |    W_2 |
+|-------|-------|--------|
+|    10 |    15 |     36 |
+|    20 |    31 |     92 |
+|    50 |    63 |    276 |
+|   100 |   127 |    652 |
+|  1000 |  1023 |   9120 |
+|  5000 |  8191 |  61728 |
+| 10000 | 16383 | 133456 |
        
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
