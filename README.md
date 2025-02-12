@@ -37,18 +37,45 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
-Case 1: $f(n) = 1$
+**Case 1:** $f(n) = 1
 
 $W(n) = aW(n/b) + 1$
-$W(n)
 
-Case 3: $f(n) = n$
+$W(n) = O
 
-$W(n) = aW(n/b) + $
+When $f(n) = 1$ it is
 
-$W(n) = O(nlog (n)$)
+**Case 2:** $f(n) = \log n$
 
+$W(n) = aW(n/b) + \log n$
 
+**Case 3:** $f(n) = n$
+
+$W(n) = aW(n/b) + n$
+
+$W(n) = O(nlog (n))$
+
+Comparison of work functions: $f(n) = 1$ and $f(n) = \log n$
+|     n |   W_1 |       W_2 |
+|-------|-------|-----------|
+|    10 |    15 |    24.118 |
+|    20 |    31 |    60.936 |
+|    50 |    63 |   153.273 |
+|   100 |   127 |   354.126 |
+|  1000 |  1023 |  4041.863 |
+|  5000 |  8191 | 38973.906 |
+| 10000 | 16383 | 83633.898 |
+
+Comparison of work functions: $f(n) = 1$ and $f(n) = n$
+|     n |   W_1 |      W_2 |
+|-------|-------|----------|
+|    10 |    15 |       78 |
+|    20 |    31 |      316 |
+|    50 |    63 |     1582 |
+|   100 |   127 |     6364 |
+|  1000 |  1023 |   511512 |
+|  5000 |  8191 | 20479096 |
+| 10000 | 16383 | 81918192 |
        
 
 - [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer. 
