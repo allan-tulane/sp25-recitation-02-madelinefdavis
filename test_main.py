@@ -20,17 +20,16 @@ def test_work():
 	assert work_calc(100, 2, 2, lambda n: n*n) == 19580
 
 def test_compare_work():
-	# Test different work functions
+	# Test different work functions with smaller sizes for quick testing
 	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: 1)
 	work_fn2 = lambda n: work_calc(n, 2, 2, lambda x: x*x)
-
-	res = compare_work(work_fn1, work_fn2)
+	
+	sizes = [10, 20, 50, 100]  # Using smaller sizes for quick testing
+	res = compare_work(work_fn1, work_fn2, sizes)
+	print("\nComparison of work functions:")
 	print_results(res)
 	
-	# Add an assertion to make pytest run this test
-	
-
-#compare_work(lambda n:1, lambda n:n)
+	assert len(res) > 0, "Results should not be empty"
 #compare_work(lambda n:n, lambda n: math.log(n))
 #compare_work(lambda n: n ** 2, lambda n: n ** 1.5)
 #compare_work(lambda n: n ** 0.5, lambda n: n ** 3.5)
