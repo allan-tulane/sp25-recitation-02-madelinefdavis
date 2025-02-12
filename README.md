@@ -42,26 +42,28 @@ where $W(1) = 1$.
 
 $W(n) = aW(n/b) + 1$
 
-If a > 1 then this is leaf-dominated and $W(n) = O(n^{log_b a})$. If a=1 then it is balanced and $W(n)= O(log n). For my test I had $a=2$ and $b=2$ which would be $W(n) = O(n)$ and my results are roughly linear.
+If a > 1 then this is leaf-dominated and $W(n) = O(n^{\log_b a})$. If a=1 then it is balanced and $W(n)= O(\log n). For my test I had $a=2$ and $b=2$ which would be $W(n) = O(n)$ and my results are roughly linear.
 
 
 **Case 2:** $f(n) = \log n$
 
 $W(n) = aW(n/b) + \log n$
 
-When $f(n) = \log n$ it is balanced and $W(n) = O(nlog n)$ and my results seemed to follow that.
+When $f(n) = \log n$ it is balanced and $W(n) = O(n\log n)$ and my results seemed to follow that.
 
 **Case 3:** $f(n) = n$
 
 $W(n) = aW(n/b) + n$
 
 If a>b it is root dominated so $W(n) = O(n)$
-If a<b it is leaf dominated so $W(n) = O(n^{log_b a})$
-When a = b it is balanced so $W(n) = O(nlog (n))$ 
+If a<b it is leaf dominated so $W(n) = O(n^{\log_b a})$
+When a = b it is balanced so $W(n) = O(n\log (n))$ 
 For my test case $a= 2$ and $b=2$ and my results follow that complexity
 
-Comparison of work functions: $f(n) = 1$ and $f(n) = \log n$
-Comparison of work functions:
+**Comparison of work functions:**
+
+$f(n) = 1$ and $f(n) = \log n$
+
 |     n |   W_1 |       W_2 |
 |-------|-------|-----------|
 |    10 |    15 |    16.294 |
@@ -72,7 +74,10 @@ Comparison of work functions:
 |  5000 |  8191 |  9919.326 |
 | 10000 | 16383 | 19847.862 |
 
-Comparison of work functions: $f(n) = 1$ and $f(n) = n$
+**Comparison of work functions:**
+
+$f(n) = 1$ and $f(n) = n$
+
 |     n |   W_1 |    W_2 |
 |-------|-------|--------|
 |    10 |    15 |     36 |
@@ -90,9 +95,9 @@ $W(n) = $W(n) = aW(n/b) + n^c$
 
 **Case 1:** $c < \log_b a$ (leaf-dominated)
 
-The leaf dominates the function therefore the expected complexity is $W(n) = O(n^{log_b a})$
+The leaf dominates the function therefore the expected complexity is $W(n) = O(n^{\log_b a})$
 
-Comparison of work functions:
+**Comparison of work functions:**
 
 work_fn1 = lambda n: work_calc(n, 4, 2, lambda x: x) 
 
@@ -114,7 +119,7 @@ work_fn2 roughly follows $O(n)= n^2$
 
 here the root dominates the function therefore the expected complexity is $W(n) = O(n^c)$
 
-Comparison of work functions:
+**Comparison of work functions:**
 
 work_fn1 = lambda n: work_calc(n, 4, 2, lambda x: x) 
 
@@ -132,15 +137,17 @@ work_fn2 roughly follows $O(n)= n^2$
 |  5000 |  34237688 |  294904064 |
 | 10000 | 136960752 | 1279616256 |
 
-**Case 3:** $c = \log_b a$
+**Case 3:** $c = \log_b a$ (balanced)
 
-Comparison of work functions:
+here the work is evenly distirbuted between the leaf and the root and will lead to a complexity of $O(n^c\log n)$
+
+**Comparison of work functions:**
 
 work_fn1 = lambda n: work_calc(n, 4, 2, lambda x: x) 
 
 work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2*math.log(x))
 
-work_fn2 roughly follows $O(n)= n^2log n$
+work_fn2 roughly follows $O(n)= n^2\log n$
 
 |     n |       W_1 |            W_2 |
 |-------|-----------|----------------|
@@ -152,11 +159,38 @@ work_fn2 roughly follows $O(n)= n^2log n$
 |  5000 |  34237688 | 1384552219.544 |
 | 10000 | 136960752 | 6459242915.374 |
 
-- [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
+- [x] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should.
 
-Comparison of span functions:
+Span measures the longest sequence of computation $S(n) = S(n/b) +f(n)$ is the same as work but we do not multiple it by $a$ since we are only consider one path at a time not the whole thing.
+
+**Case 1:** $f(n) = 1$
+
+$S(n) = S(n/b) + 1$
+
+since $O(1)$ is constant this will have a complexity of $O(\log n)$ 
+
+**Case 2:** $f(n) = n$
+
+$S(n) = S(n/b) + n$
+
+$f(n) = n$ asymptotically dominates and therefore there will be a complexity of $O(n)$
+
+**Case 3:** $f(n) = \log n$
+
+$S(n) = S(n/b) + \log n$
+
+since both term is $O(\log n)$ this will have a complexity of $O(\log^2n)$
+
+when you look below at the results you see that they confirm our prediction. 
+
+$f(n) = 1$ increases the slowest at about a rate of $\log n$. $f(n) = n$ grows linearly and $f(n) = \log n$ also grows slowly (not as slowly as $f(n) = 1$ but still but slower than linear
+
+**Comparison of span functions:**
+
 span_fn1 = lambda n: span_calc(n, 2, 2, lambda x: 1)
+
 span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: x)
+
 |     n |   W_1 |   W_2 |
 |-------|-------|-------|
 |    10 |     4 |    18 |
@@ -167,9 +201,12 @@ span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: x)
 |  5000 |    13 |  9995 |
 | 10000 |    14 | 19995 |
 
-Comparison of span functions:
+**Comparison of span functions:**
+
 span_fn1 = lambda n: span_calc(n, 2, 2, lambda x: 1)
+
 span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: math.log(x))
+
 |     n |   W_1 |    W_2 |
 |-------|-------|--------|
 |    10 |     4 |  5.605 |
