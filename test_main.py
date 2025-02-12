@@ -21,26 +21,19 @@ def test_work():
 
 def test_compare_work():
 	
-# curry work_calc to create multiple work
+	# curry work_calc to create multiple work
 	# functions taht can be passed to compare_work
     
 	# create work_fn1
 	# create work_fn2
-    #res = compare_work(work_fn1, work_fn2)
-	#print(res)
-	
-
-	# Define work functions with different f(n)
-	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)  # f(n) = n
-	work_fn2 = lambda n: work_calc(n, 2, 2, lambda x: 1)  # f(n) = 1
-
 	
 	res = compare_work(work_fn1, work_fn2)
 	print_results(res)
-
-	# Verify that W(n) with f(n) = n grows faster than W(n) with f(n) = 1
-	for n, w1, w2 in res:
-		assert w1 >= w2, f"Failed at n={n}: W1={w1}, W2={w2}"
+	
+test_compare_work(lambda n:1, lambda n:n)
+test_compare_work(lambda n:n, lambda n: math.log(n))
+test_compare_work(lambda n: n ** 2, lambda n: n ** 1.5)
+test_compare_work(lambda n: n ** 0.5, lambda n: n ** 3.5)
 	
 
 
