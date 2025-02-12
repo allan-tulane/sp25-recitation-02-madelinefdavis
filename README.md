@@ -37,22 +37,26 @@ where $W(1) = 1$.
 
 - [ ] 4. (2 point) Now, derive the asymptotic behavior of $W(n)$ using $f(n) = 1$, $f(n) = \log n$ and $f(n) = n$. Then, generate actual values for $W(n)$ for your code and confirm that the trends match your derivations.
 
+
 **Case 1:** $f(n) = 1
 
 $W(n) = aW(n/b) + 1$
 
-$W(n) = O
+If a > 1 then this is leaf-dominated and $W(n) = O(n^{log_b a})$. If a=1 then it is balanced and $W(n)= O(log n). For my test I had $a=2$ and $b=2$ which would be $W(n) = O(n)$ and my results are roughly linear.
 
-When $f(n) = 1$ it is
 
 **Case 2:** $f(n) = \log n$
 
 $W(n) = aW(n/b) + \log n$
 
+When $f(n) = \log n$ it is balanced and $W(n) = O(nlog n)$ and my results seemed to follow that.
+
 **Case 3:** $f(n) = n$
 
 $W(n) = aW(n/b) + n$
 
+If a>b it is root dominated so $W(n) = O(n)$
+If a<b it is leaf dominated
 $W(n) = O(nlog (n))$
 
 Comparison of work functions: $f(n) = 1$ and $f(n) = \log n$
