@@ -112,3 +112,5 @@ def compare_span(span_fn1, span_fn2, sizes=[10, 20, 50, 100, 1000, 5000, 10000])
 	return result
 	
 
+	
+				

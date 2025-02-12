@@ -20,7 +20,7 @@ def test_work():
 	assert work_calc(100, 2, 2, lambda n: n*n) == 19580
 
 def test_compare_work():
-	"""Compare empirical results of different work functions"""
+	
 
 	# Define work functions with different f(n)
 	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x)  # f(n) = n
