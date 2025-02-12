@@ -45,7 +45,8 @@ def test_compare_work():
 
 def test_compare_span():
 	span_fn1 = lambda n: span_calc(n, 2, 2, lambda x: 1)
-	span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: x*x)
+	#span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: x)
+	span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: math.log(x))
 	
 	sizes=[10, 20, 50, 100, 1000, 5000, 10000]
 	res = compare_span(span_fn1, span_fn2, sizes)

@@ -152,4 +152,28 @@ work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2*math.log(x))
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
-**TODO: your answer goes here**
+Comparison of span functions:
+span_fn1 = lambda n: span_calc(n, 2, 2, lambda x: 1)
+span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: x)
+|     n |   W_1 |   W_2 |
+|-------|-------|-------|
+|    10 |     4 |    18 |
+|    20 |     5 |    38 |
+|    50 |     6 |    97 |
+|   100 |     7 |   197 |
+|  1000 |    10 |  1994 |
+|  5000 |    13 |  9995 |
+| 10000 |    14 | 19995 |
+
+Comparison of span functions:
+span_fn1 = lambda n: span_calc(n, 2, 2, lambda x: 1)
+span_fn2 = lambda n: span_calc(n, 2, 2, lambda x: math.log(x))
+|     n |   W_1 |    W_2 |
+|-------|-------|--------|
+|    10 |     4 |  5.605 |
+|    20 |     5 |  8.601 |
+|    50 |     6 | 13.506 |
+|   100 |     7 | 18.111 |
+|  1000 |    10 | 37.786 |
+|  5000 |    13 | 56.944 |
+| 10000 |    14 | 66.154 |
