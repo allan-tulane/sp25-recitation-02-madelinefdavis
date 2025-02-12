@@ -29,7 +29,9 @@ def test_compare_work():
 	#quesiton 5 test cases
 	#W_1 for all cases
 	work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x) 
-	work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**0.5)
+	#work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**0.5)
+	#work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2)
+	work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2*math.log(x))
 	
 	sizes=[10, 20, 50, 100, 1000, 5000, 10000]
 	res = compare_work(work_fn1, work_fn2, sizes)

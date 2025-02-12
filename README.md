@@ -90,9 +90,46 @@ $W(n) = $W(n) = aW(n/b) + n^c$
 
 **Case 1:** $c < \log_b a$
 
+Comparison of work functions:
+work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x) 
+work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**0.5)
+|     n |    W_1 |           W_2 |
+|-------|--------|---------------|
+|    10 |     36 |        98.734 |
+|    20 |     92 |       399.408 |
+|    50 |    276 |      1706.669 |
+|   100 |    652 |      6836.676 |
+|  1000 |   9120 |    443674.137 |
+|  5000 |  61728 |  26036347.356 |
+| 10000 | 133456 | 104145489.424 |
+
 **Case 2:** $c > \log_b a$
+Comparison of work functions:
+work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x) 
+work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2)
+|     n |    W_1 |        W_2 |
+|-------|--------|------------|
+|    10 |     36 |        328 |
+|    20 |     92 |       1712 |
+|    50 |    276 |      12936 |
+|   100 |    652 |      61744 |
+|  1000 |   9120 |    8544512 |
+|  5000 |  61728 |  294904064 |
+| 10000 | 133456 | 1279616256 |
 
 **Case 3:** $c = \log_b a$
+Comparison of work functions:
+work_fn1 = lambda n: work_calc(n, 2, 2, lambda x: x) 
+work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2*math.log(x))
+|     n |    W_1 |            W_2 |
+|-------|--------|----------------|
+|    10 |     36 |        499.564 |
+|    20 |     92 |       3196.548 |
+|    50 |    276 |      31235.889 |
+|   100 |    652 |     170995.256 |
+|  1000 |   9120 |   35880844.351 |
+|  5000 |  61728 | 1384552219.544 |
+| 10000 | 133456 | 6459242915.374 |
 
 - [ ] 6. (3 points) $W(n)$ is meant to represent the running time of some recursive algorithm. Suppose we always had $a$ processors available to us and we wanted to compute the span of the same algorithm. Implement the function `span_calc` to compute the empirical span, where the work of the algorithm is given by $W(n)$. Implement `test_compare_span` to create a new comparison function for comparing span functions. Derive the asymptotic expressions for the span of the recurrences you used in problem 4 above. Confirm that everything matches up as it should. 
 
