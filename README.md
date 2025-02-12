@@ -84,7 +84,7 @@ Comparison of work functions: $f(n) = 1$ and $f(n) = n$
 | 10000 | 16383 | 133456 |
        
 
-- [ ] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
+- [x] 5. (4 points) Now that you have a nice way to empirically generate valuess of $W(n)$, we can look at the relationship between $a$, $b$, and $f(n)$. Suppose that $f(n) = n^c$. What is the asypmptotic behavior of $W(n)$ if $c < \log_b a$? What about $c > \log_b a$? And if they are equal? Modify `test_compare_work` to compare empirical values for different work functions (at several different values of $n$) to justify your answer.
 
 $W(n) = $W(n) = aW(n/b) + n^c$
 
@@ -110,9 +110,9 @@ work_fn2 roughly follows $O(n)= n^2$
 |  5000 |  34237688 |  26036347.356 |
 | 10000 | 136960752 | 104145489.424 |
 
-**Case 2:** $c > \log_b a$ (root-dominated)
+**Case 2:** $c > \log_b a )$ (root-dominated)
 
-here the root dominates the function therefore the expected complexity is $W(n) = O(n^c)
+here the root dominates the function therefore the expected complexity is $W(n) = O(n^c)$
 
 Comparison of work functions:
 
@@ -139,6 +139,8 @@ Comparison of work functions:
 work_fn1 = lambda n: work_calc(n, 4, 2, lambda x: x) 
 
 work_fn2 = lambda n: work_calc(n, 4, 2, lambda x: x**2*math.log(x))
+
+work_fn2 roughly follows $O(n)= n^2log n$
 
 |     n |       W_1 |            W_2 |
 |-------|-----------|----------------|
