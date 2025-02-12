@@ -19,19 +19,22 @@ def test_work():
 	assert work_calc(100, 2, 2, lambda n: n) == 652
 	assert work_calc(100, 2, 2, lambda n: n*n) == 19580
 
-def test_compare_work(f1=lambda n:1, f2=lambda n:n):
-    # create work functions using the input functions f1 and f2
-    work_fn1 = lambda n: work_calc(n, 2, 2, f1)
-    work_fn2 = lambda n: work_calc(n, 2, 2, f2)
-    
-    res = compare_work(work_fn1, work_fn2)
-    print_results(res)
+def test_compare_work():
+	# curry work_calc to create multiple work
+		# functions taht can be passed to compare_work
 
-# Test different function combinations
-test_compare_work()  # default f1=lambda n:1, f2=lambda n:n
-test_compare_work(lambda n:n, lambda n: math.log(n))
-test_compare_work(lambda n: n ** 2, lambda n: n ** 1.5)
-test_compare_work(lambda n: n ** 0.5, lambda n: n ** 3.5)
+		# create work_fn1
+		work_fn1 = lambda n: 1
+		# create work_fn2
+		work_fn2 = lambda n: n*n
+
+		res = compare_work(work_fn1, work_fn2)
+		print_results(res)
+
+#compare_work(lambda n:1, lambda n:n)
+#compare_work(lambda n:n, lambda n: math.log(n))
+#compare_work(lambda n: n ** 2, lambda n: n ** 1.5)
+#compare_work(lambda n: n ** 0.5, lambda n: n ** 3.5)
 	
 
 
